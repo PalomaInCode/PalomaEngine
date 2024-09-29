@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Bases Numéricas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Conversor de Bases Numéricas</h1>
+        <p> © paloma</p> <br>
+
+        <div class="input-box">
+            <input type="text" id="inputNumber" placeholder="Digite um número">
+        </div>
+
+        <label for="fromBase">Base de Origem:</label>
+        <select id="fromBase">
+            <option value="0" selected>Selecione uma opção</option>
+            <option value="2">Binária</option>
+            <option value="8">Octal</option>
+            <option value="10">Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+
+        <label for="toBase">Base de Destino:</label>
+        <select id="toBase">
+            <option value="0" selected>Selecione uma opção</option>
+            <option value="2">Binária</option>
+            <option value="8">Octal</option>
+            <option value="10">Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+
+        <button class="btn" onclick="converter()">Converter</button>
+
+        <div id="resultado">Resultado aqui</div>
+    </div>
+
+    <script>
+        function converter() {
+            var inputNumber = document.getElementById('inputNumber').value;
+            var fromBase = parseInt(document.getElementById('fromBase').value);
+            var toBase = parseInt(document.getElementById('toBase').value);
+
+            var decimalNumber = parseInt(inputNumber, fromBase);
+
+            if (isNaN(decimalNumber)) {
+                document.getElementById('resultado').innerHTML = 'Número inválido na base de origem.';
+                return;
+            }
+            //colocar a opção de select de "selecione uma opção"
+
+            var resultado = decimalNumber.toString(toBase);
+            document.getElementById('resultado').innerHTML = 'Resultado: ' + resultado.toUpperCase();
+        }
+    </script>
+</body>
+
+</html>
